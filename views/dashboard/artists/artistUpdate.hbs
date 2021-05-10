@@ -1,0 +1,17 @@
+<h2>Update artist</h2>
+
+<form method="post" action="/dashboard/artist/{{artist._id}}/edit" enctype="multipart/form-data">
+    <p><label for="">Upload a picture</label>
+        <input type="file" name="image" placeholder="Picture">
+    </p>
+    <p><label for="">Enter the Artist Name</label>
+        <input type="text" name="name" placeholder="Artist Name">
+    </p>
+    <p><label for="">Enter a description</label>
+        <input type="text" name="description" placeholder="Enter a description">
+    </p>
+    <p><label for="">Is it a band ?</label>
+        <input type="text" name="isBand" placeholder="Band Name">
+    </p>
+    <input type="submit" value="ok">
+</form>

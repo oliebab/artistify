@@ -1,0 +1,34 @@
+
+ <a href="/dashboard/artist/create"><h1 class="title">All artist <i class="link artist fas fa-plus"></i></h1></a>
+
+<table>
+    <thead>
+        <tr>
+            <th>picture</th>
+            <th>name</th>
+            <th>description</th>
+            <th>band</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each artists}}
+        <tr>
+            <td id="pictureBox"><img src="{{this.picture}}"></td>
+            <td>{{this.name}} </td>
+            <td>{{this.description}}</td>
+            <td>{{this.band}}</td>
+            <td><a href="/dashboard/artist/update/{{this._id}}"><i class="fas fa-pen"></i></a></td>
+                
+             <td>
+                <form action="/dashboard/artist/delete/{{this._id}}" method="post"> 
+                    <button class="p-1 m-1 btn btn-warning white border-none"> 
+           
+                    <i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+        </tr>
+         {{/each}}
+    </tbody>
+</table>

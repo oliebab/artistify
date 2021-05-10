@@ -5,7 +5,7 @@ const artistSchema = new Schema({
   picture: String,
   name: String,
   description: String,
-  band: Boolean,
+  isBand: Boolean,
 });
 
 const ArtistModel = mongoose.model("artists", artistSchema);

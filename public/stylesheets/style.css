@@ -146,3 +146,30 @@ hr {
   margin-right: 10px;
   display: inline-block;
 }
+
+table {
+  border-collapse:collapse;
+  width:90%;
+  margin-top: 40px
+}
+
+th, td {
+  border:1px solid black;
+  width:20%;
+}
+
+td {
+  text-align:center;
+}
+
+caption {
+  font-weight:bold
+}
+
+span.td {
+  display:table-cell;
+}
+
+.border-none {
+  border: none !important
+}
