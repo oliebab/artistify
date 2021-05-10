@@ -61,6 +61,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-app.listen(process.env.PORT, () => console.log(`this port ${process.env.PORT} is connected`));
+console.log(`this http://localhost:${process.env.PORT} is connected`);
+
 module.exports = app;
 
