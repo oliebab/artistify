@@ -10,28 +10,32 @@
 
 
 <table>
-    <tr>
-        <th>logo</th>
-        <th>name</th>
-        <th>country</th>
-        <th>city</th>
-        <th>street</th>
-        <th>street num</th>
-        <th>zip</th>
-        <th>update</th>
-        <th>delete</th>
-    </tr>
-    {{#each labels}}
-    <tr>
-        <td>{{this.logo}}</td>
-        <td>{{this.name}}</td>
-        <td>{{this.country}}</td>
-        <td>{{this.city}}</td>
-        <td>{{this.street}}</td>
-        <td>{{this.streetNumber}}</td>
-        <td>{{this.zip}}</td>
-        <td><a href="dashboard/label/update/{{this._id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-        <td><a href="dashboard/label/delete/{{this._id}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-    </tr>
-    {{/each}}
+    <thead>
+        <tr>
+            <th>logo</th>
+            <th>name</th>
+            <th>country</th>
+            <th>city</th>
+            <th>street</th>
+            <th>street num</th>
+            <th>zip</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+    <tbody> {{#each labels}}
+        <tr>
+            <td>{{this.logo}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.country}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.street}}</td>
+            <td>{{this.streetNumber}}</td>
+            <td>{{this.zipcode}}</td>
+            <td><a href="/dashboard/label/update/{{this._id}}"><i class="fa fa-pen" aria-hidden="true"></i></a></td>
+            <td><a href="/dashboard/label/delete/{{this._id}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+
 </table>

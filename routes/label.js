@@ -10,13 +10,13 @@ router.get("/", function (req, res, next) {
   LabelModel.find()
     .then((dbResult) => {
       // send all labels to the render function
-      res.render("dashboard/labels.hbs", { labels: dbResult });
+      res.render("dashboard/labels/labels.hbs", { labels: dbResult });
     })
     .catch((dbErr) => next(dbErr));
 });
 
 router.get("/create", (req, res) => {
-  res.render("dashboard/labelCreate.hbs");
+  res.render("dashboard/labels/labelCreate.hbs");
 });
 
 router.post("/create", uploader.single("logo"), (req, res, next) => {
@@ -30,7 +30,7 @@ router.post("/create", uploader.single("logo"), (req, res, next) => {
 
   /*LabelModel.create({
     logo: req.file.path,
-    ...req.body
+    ...req.body  // req.body ne prend pas en compte <input type="file" name="logo"> et c'est l'enctype qui sert à traiter les input de ce type
   })*/
 
   LabelModel.create({
@@ -51,7 +51,7 @@ router.post("/create", uploader.single("logo"), (req, res, next) => {
 router.get("/update/:id", (req, res, next) => {
   LabelModel.findById(req.params.id)
     .then((dbResult) => {
-      res.render("dashboard/labelUpdate.hbs", {
+      res.render("dashboard/labels/labelUpdate.hbs", {
         label: dbResult,
       });
     })
