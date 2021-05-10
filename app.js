@@ -10,7 +10,7 @@ const logger = require("morgan");
 const hbs = require("hbs");
 
 const app = express();
-// const PORT = 4000;
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -29,14 +29,11 @@ app.use(express.static(path.join(__dirname, "public")));
 const indexRouter = require("./routes/index");
 const artistRouter = require("./routes/artist");
 // require label router here
-// require style router here
-
-// use routers
+const styleRoutes = require('./routes/style');
+app.use('/dashboard/styles/', styleRoutes);
 app.use("/", indexRouter); // use routers
-// app.use("/", artistRouter);
 app.use("/dashboard/artist", artistRouter);
 // use label router here
-// use style router here
 
 
 // catch 404 and forward to error handler

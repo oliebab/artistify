@@ -6,7 +6,7 @@ const uploader = require("./../config/cloudinary");
 router.get("/", async (req, res, next) => {
     try {
       const artists = await ArtistModel.find();
-      res.render("dashboard/artists.hbs", { 
+      res.render("dashboard/artists/artists.hbs", { 
         artists,
       });
     } catch (dbErr) {
@@ -14,15 +14,14 @@ router.get("/", async (req, res, next) => {
     }
   });
   
-  router.get('/create', uploader.single("logo"), (req, res, next) => {
-    // Iteration #3: Add a new drone
-    res.render("dashboard/artistCreate.hbs");
+  router.get('/create', (req, res, next) => {
+    res.render("dashboard/artists/artistCreate.hbs");
   });
   
-  router.post('/create', (req, res, next) => {
-    // Iteration #3: Add a new drone
-    console.log(req.body); // will contain the posted informations
-    ArtistModel.create(req.body)
+
+  router.post('/create', uploader.single("picture"), (req, res, next) => {
+    const { name, description, isBand } = req.body;
+    ArtistModel.create({ picture:req.file.path, name, description, isBand })
       .then((dbResult) => {
         console.log(dbResult);
         res.redirect("/dashboard/artist");
@@ -31,11 +30,11 @@ router.get("/", async (req, res, next) => {
   });
   
   router.get('/update/:id', (req, res, next) => {
-    // Iteration #4: Update the drone
-    ArtistModel.findById(req.params.id)
+    const { id } = req.params;
+    ArtistModel.findById(id)
       .then((dbResult) => {
         console.log(dbResult);
-        res.render("dashboard/artistUpdate.hbs", {
+        res.render("dashboard/artists/artistUpdate.hbs", {
           artist: dbResult,
         });
       })
@@ -43,8 +42,9 @@ router.get("/", async (req, res, next) => {
   });
   
   router.post('/update/:id', (req, res, next) => {
-    // Iteration #4: Update the drone
-    ArtistModel.findByIdAndUpdate(req.params.id, req.body)
+    const { id } = req.params;
+    const { picture, name, description, isBand } = req.body;
+    ArtistModel.findByIdAndUpdate(id,  { picture, name, description, isBand })
       .then((dbResult) => {
         console.log(dbResult);
         res.redirect("/dashboard/artist");
@@ -52,9 +52,9 @@ router.get("/", async (req, res, next) => {
       .catch((dbErr) => next(dbErr));
   });
   
-  router.get('/delete/:id', (req, res, next) => {
-    // Iteration #5: Delete the drone
-    ArtistModel.findByIdAndDelete(req.params.id)
+  router.post('/delete/:id', (req, res, next) => {
+    const { id } = req.params;
+    ArtistModel.findByIdAndDelete(id)
       .then((dbSuccess) => {
         console.log(dbSuccess);
         res.redirect("/dashboard/artist");

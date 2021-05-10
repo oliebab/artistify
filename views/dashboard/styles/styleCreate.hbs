@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h2 class="text-center green">Create a new style</h2>
+
+  <form action="/dashboard/styles/create" method="post">
+    <div class="mb-3">
+      <label for="name-input" class="form-label">Name:</label>
+      <input type="text" class="form-control" name="name" id="name-input" />
+    </div>
+    <div class="mb-3">
+    <label for="color-input" class="form-label">Color:</label>
+    <input type="text" class="form-control"  name="color" id="color-input" />
+  </div>
+    <div class="mb-3">
+        <label for="wikiURL-input" class="form-label">wikiURL:</label>
+        <input type="text" class="form-control"  name="wikiURL" id="wikiURL-input" />
+  </div>
+
+    <button class="btn btn-primary white p-1 m-1" type="submit">Create</button>
+  
+  </form>
+</div>
