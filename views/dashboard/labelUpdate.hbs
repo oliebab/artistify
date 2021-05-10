@@ -1,0 +1,39 @@
+<h1>create new label</h1>
+{{!-- action : WHERE SHOULD THE DATA GO ? --}}
+{{!-- IT MUST BE LINKED TO A ROUTE --}}
+{{!-- this way is the legacy way : the synchronous method --}}
+<form method="post" action="/dashboard/label/update/{{label._id}}" enctype="multipart/form-data">
+    {{!-- NAMES attributes ARE MANDATORY --}}
+
+    <p>
+        <label for="logo">logo</label>
+        <input type="file" name="logo" value="{{label.logo}}">
+    </p>
+    <p>
+        <label for="">name</label>
+        <input name="name" type="text" value="{{label.name}}">
+    </p>
+    <p>
+        <label for="">country</label>
+        <input name="country" type="text" value="{{label.country}}">
+    </p>
+    <p>
+        <label for="">city</label>
+        <input name="city" type="text" value="{{label.city}}">
+    </p>
+    <p>
+        <label for="">street</label>
+        <input name="street" type="text" value="{{label.street}}">
+    </p>
+    <p>
+        <label for="">street num</label>
+        <input name="streetNumber" type="text" value="{{label.streetNumber}}">
+    </p>
+
+    <p>
+        <label for="">zip</label>
+        <input name="zipcode" type="number" value="{{label.zipcode}}">
+    </p>
+
+    <button>ok</button>
+</form>
