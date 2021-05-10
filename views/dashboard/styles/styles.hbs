@@ -1,0 +1,35 @@
+
+ <a href="/dashboard/styles/create"><h1 class="title">All styles <i class="link style fas fa-plus"></i></h1></a>
+
+<table>
+    <thead>
+        <tr>
+            <th>color</th>
+            <th>name</th>
+            <th>wikiURL</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each styles}}
+        <tr>
+            <td>{{this.color}}</td>
+            <td>{{this.name}} </td>
+            <td>{{this.wikiURL}}</td>
+            <td><a href="/dashboard/styles/{{this._id}}/edit"><i class="fas fa-pen"></i></a></td>
+                
+             <td>
+                <form action="/dashboard/styles/{{this._id}}/delete" method="POST"> 
+                    <button class="p-1 m-1 btn btn-warning white border-none"> 
+           
+                    <i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+            
+                 
+
+        </tr>
+         {{/each}}
+    </tbody>
+</table>

@@ -10,7 +10,7 @@ const logger = require("morgan");
 const hbs = require("hbs");
 
 const app = express();
-// const PORT = 4000;
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -30,7 +30,8 @@ const indexRouter = require("./routes/index");
 // require artist router
 // require label router here
 // require style router here
-
+const styleRoutes = require('./routes/style');
+app.use('/dashboard/styles/', styleRoutes);
 // use routers
 app.use("/", indexRouter); // use routers
 // use artist router here
