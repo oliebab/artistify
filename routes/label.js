@@ -55,13 +55,13 @@ router.get("/update/:id", (req, res, next) => {
         label: dbResult,
       });
     })
-    .next((dbErr) => next(dbErr));
+    .catch((dbErr) => next(dbErr));
 });
 
-router.post("/update/:id", uploader.single("logo"),(req, res, next) => {
-  const { name, country, city, street, streetNumber, zipcode } = req.body;
+router.post("/update/:id", uploader.single("logo"), (req, res, next) => {
+  const { logo, name, country, city, street, streetNumber, zipcode } = req.body;
 
-  LabelModel.findByIdAndUpdate({
+  LabelModel.findByIdAndUpdate(req.params.id, {
     logo: req.file.path,
     name,
     country,
@@ -70,7 +70,6 @@ router.post("/update/:id", uploader.single("logo"),(req, res, next) => {
     streetNumber,
     zipcode,
   })
-
     .then((dbResult) => {
       res.redirect("/dashboard/label");
     })
